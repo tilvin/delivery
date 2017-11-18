@@ -1,0 +1,20 @@
+.jumbotron
+  %p
+    %h3 Рестораны
+    %p.text-right= link_to 'Добавить ресторан', new_admin_restaurant_path, class: 'btn btn-success'
+  %table.table.table-hover
+    %thead
+      %tr
+        %td ID
+        %td Название
+        %td
+        %td
+
+    %tbody
+      - @restaurants.each do |restaurant|
+        %tr
+          %td= restaurant.id
+          %td= restaurant.name
+          %td= link_to 'Просмотр', admin_restaurant_path(restaurant), class: 'btn btn-primary'
+          %td= link_to 'Редактировать', edit_admin_restaurant_path(restaurant), class: 'btn btn-warning'
+          %td= link_to 'Удалить', admin_restaurant_path(restaurant), method: :delete, class: 'btn btn-danger'

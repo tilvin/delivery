@@ -1,0 +1,60 @@
+.jumbotron
+  .row
+    .col-md-3
+    .col-md-6
+      = form_for @order do |f|
+        .form-group
+          = f.label 'Телефон'
+          = f.text_field :phone, class: 'form-control', data: { mask: '+7 (999) 999-99-99'}
+          = show_errors(f.object.errors, :phone)
+        .form-group
+          = f.label 'Имя'
+          = f.text_field :name, class: 'form-control'
+          = show_errors(f.object.errors, :name)
+        .form-group
+          = f.label 'Улица'
+          = f.text_field :street, class: 'form-control'
+          = show_errors(f.object.errors, :street)
+        .row
+          .col-md-6
+            .form-group
+              = f.label 'Дом'
+              = f.text_field :house, class: 'form-control'
+              = show_errors(f.object.errors, :house)
+          .col-md-6
+            .form-group
+              = f.label 'Подъезд'
+              = f.text_field :entrance, class: 'form-control'
+              = show_errors(f.object.errors, :entrance)
+        .row
+          .col-md-6
+            .form-group
+              = f.label 'Этаж'
+              = f.text_field :floor, class: 'form-control'
+              = show_errors(f.object.errors, :floor)
+          .col-md-6
+            .form-group
+              = f.label 'Квартира'
+              = f.text_field :flat, class: 'form-control'
+              = show_errors(f.object.errors, :flat)
+        .row
+          .col-md-6
+            .form-group
+              = f.label 'Домофон'
+              = f.text_field :intercom, class: 'form-control'
+              = show_errors(f.object.errors, :intercom)
+          .col-md-6
+            .form-group
+              = f.label 'Ко времени'
+              = f.time_field :by_time, class: 'form-control'
+              = show_errors(f.object.errors, :by_time)
+        .form-group
+          = f.label 'Точка'
+          = f.select :point_id, current_user.restaurant.points.map { |point| [point.name, point.id] }, { include_blank: true }, class: 'form-control'
+        .form-group
+          = f.label 'Комментарий'
+          = f.text_area :comment, class: 'form-control', placeholder: 'Информация для курьера'
+          = show_errors(f.object.errors, :comment)
+        .form-group
+          = f.submit 'Сохранить', class: 'btn btn-primary'
+    .col-md-3

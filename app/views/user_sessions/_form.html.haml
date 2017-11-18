@@ -1,0 +1,16 @@
+.jumbotron
+  .row
+    .col-md-3
+    .col-md-6
+      %h2{style: "text-align: center;"} Вход
+
+      = form_for :user, url: user_sessions_path, method: :post, html: { class: 'form-signin' } do |f|
+        .form-group
+          = f.text_field :email, class: 'form-control', placeholder: 'Емаил'
+        .form-group
+          = f.password_field :password, class: 'form-control', placeholder: 'Пароль'
+        .form-group
+          %p{style: "text-align: center;"}
+            = f.submit 'Войти', class: 'btn btn-primary'
+    .col-md-3
+

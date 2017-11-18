@@ -1,0 +1,25 @@
+.jumbotron
+  .row
+    .col-md-3
+    .col-md-6
+      = form_for [:admin, @user], html: { class: 'form-signin' } do |f|
+        .form-group
+          = f.label 'Роль'
+          = f.select :role, User.roles.map { |key, value| key }, { include_blank: true }, class: 'form-control'
+        .form-group
+          = f.label 'Компания'
+          = f.select :restaurant_id, @restaurants.map { |i| [i.name, i.id] }, { include_blank: true }, class: 'form-control'
+        .form-group
+          = f.label 'Эл.почта'
+          = f.text_field :email, class: 'form-control', placeholder: 'Емаил'
+          = show_errors(f.object.errors, :email)
+        .form-group
+          = f.label 'Пароль'
+          = f.password_field :password, class: 'form-control', placeholder: 'Пароль'
+          = show_errors(f.object.errors, :password)
+        .form-group
+          %p{style: "text-align: center;"}
+            = f.submit 'Сохранить', class: 'btn btn-primary'
+            = link_to 'Вернуться', root_path, class: 'btn btn-default'
+        .col-md-3
+

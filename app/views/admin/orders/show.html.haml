@@ -1,0 +1,52 @@
+.jumbotron
+  .row
+    %h3= "Заказ № #{ @order.id } от #{ @order.by_time.strftime('%d.%m.%Y')} ко времени #{@order.by_time.strftime('%H:%M')}"
+    .col-md-3
+      %p
+        Ресторан
+      %p
+        Статус
+      %p
+        Телефон
+      %p
+        Имя
+      %p
+        Улица
+      %p
+        Дом
+      %p
+        Подъезд
+      %p
+        Этаж
+      %p
+        Квартира
+      %p
+        Домофон
+      %p
+        Комментарий
+    .col-md-9
+      %p
+        = @order.restaurant.name
+      %p
+        = I18n.t("activerecord.attributes.order.state.#{@order.state}")
+      %p
+        = @order.phone
+      %p
+        = @order.name
+      %p
+        = @order.street
+      %p
+        = @order.house
+      %p
+        = @order.entrance
+      %p
+        = @order.floor
+      %p
+        = @order.flat
+      %p
+        = @order.intercom
+      %p
+        = @order.comment
+
+
+

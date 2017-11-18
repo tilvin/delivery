@@ -1,0 +1,13 @@
+= form_for @user, html: { class: 'form-signin' } do |f|
+  .form-group
+    = f.text_field :email, class: 'form-control', placeholder: 'Емаил'
+    = show_errors(f.object.errors, :email)
+  .form-group
+    = f.password_field :password, class: 'form-control', placeholder: 'Пароль'
+    = show_errors(f.object.errors, :password)
+  .form-group
+    = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Подтвердите пароль'
+    = show_errors(f.object.errors, :password_confirmation)
+  .form-group
+    %p{style: "text-align: center;"}
+      = f.submit 'Сохранить', class: 'btn btn-primary'

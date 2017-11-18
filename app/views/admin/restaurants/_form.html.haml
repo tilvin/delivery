@@ -1,0 +1,15 @@
+.jumbotron
+  .row
+    .col-md-3
+    .col-md-6
+      = form_for [:admin, @restaurant] do |f|
+        .form-group
+          = f.label 'Название'
+          = f.text_field :name, class: 'form-control'
+          = show_errors(f.object.errors, :name)
+        .form-group
+          %p{style: "text-align: center;"}
+            = f.submit 'Сохранить', class: 'btn btn-primary'
+            = link_to 'Вернуться', root_path, class: 'btn btn-default'
+        .col-md-3
+

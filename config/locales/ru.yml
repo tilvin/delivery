@@ -1,0 +1,28 @@
+ru:
+  date:
+    monday: Понедельник
+    tuesday: Вторник
+    wednesday: Среда
+    thursday: Четверг
+    friday: Пятница
+    saturday: Суббота
+    sunday: Воскресенье
+
+    order:
+      - :day
+      - :month
+      - :year
+  statement:
+    'true': 'Да'
+    'false': 'Нет'
+
+  activerecord:
+    attributes:
+      user:
+        role:
+          admin: администратор
+          member: пользователь
+      order:
+        state:
+          init: создан
+          accepted: принят

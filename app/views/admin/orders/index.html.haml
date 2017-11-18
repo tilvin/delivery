@@ -1,0 +1,22 @@
+.jumbotron
+  %p
+    %h3 Заказы
+  %table.table.table-hover
+    %thead
+      %tr
+        %td ID
+        %td Ресторан
+        %td Дата создания
+        %td Время создания
+        %td Статус
+        %td
+        %td
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.id
+          %td= order.restaurant.name
+          %td= order.created_at.strftime('%d.%m.%Y')
+          %td= order.created_at.strftime('%H:%M')
+          %td= I18n.t("activerecord.attributes.order.state.#{order.state}")
+          %td= link_to 'Просмотр', order_path(order), class: 'btn btn-success'
