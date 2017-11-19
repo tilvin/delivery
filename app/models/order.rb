@@ -8,8 +8,7 @@ class Order < ApplicationRecord
 
   enum state: { init: 0, accepted: 1 }
 
-  validates :phone, :name, :street, :house, :flat, :floor, :intercom, :by_time,
-            :entrance, :user_id, :restaurant_id, presence: true
+  validates :phone, :name, :street, :house, :user_id, :restaurant_id, presence: true
 
   def notify_delivery_service(order)
     order = self
