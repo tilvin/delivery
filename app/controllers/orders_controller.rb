@@ -29,7 +29,6 @@ class OrdersController < ApplicationController
   end
 
   def set_accepted
-    puts "----------------> i find!"
     if params[:token] == @order.token
       @order.update(state: 'accepted')
       render :show

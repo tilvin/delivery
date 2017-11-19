@@ -1,4 +1,4 @@
-= "Заказ № #{ @order.id } от #{ @order.by_time.strftime('%d.%m.%Y')} ко времени #{@order.by_time.strftime('%H:%M')}"
+= "Заказ № #{ @order.id } от #{ @order.by_time.try(:strftime, '%d.%m.%Y')} ко времени #{@order.by_time.try(:strftime, '%H:%M')}"
 %br
 
 Информация о заказе
@@ -30,4 +30,4 @@
 %br
 %br
 %br
-= link_to 'Принять заказ', set_accepted_order_url(@order, token: @order.token), only_path: true
+= link_to 'Принять заказ', set_accepted_order_url(@order, token: @order.token)

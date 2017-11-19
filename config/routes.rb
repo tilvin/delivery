@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders
+  resources :orders do
+    get 'set_accepted', on: :member
+  end
+
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'login' => 'user_sessions#new', as: :login
