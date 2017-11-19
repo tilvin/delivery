@@ -28,6 +28,16 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      auto_login(@user)
+      redirect_to root_path, notice: 'User was successfully created.'
+    else
+      render :new
+    end
+  end
+
   def destroy
     authorize! :destroy, User
     @user.destroy
@@ -37,7 +47,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :restaurant_id, :role)
+    params.require(:user).permit(:email, :restaurant_id, :role, :password, :password_confirmation)
   end
 
   def find_user

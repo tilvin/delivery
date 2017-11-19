@@ -18,6 +18,10 @@
           = f.password_field :password, class: 'form-control', placeholder: 'Пароль'
           = show_errors(f.object.errors, :password)
         .form-group
+          = f.label 'Подтверждение пароля'
+          = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Пароль'
+          = show_errors(f.object.errors, :password_confirmation)
+        .form-group
           %p{style: "text-align: center;"}
             = f.submit 'Сохранить', class: 'btn btn-primary'
             = link_to 'Вернуться', root_path, class: 'btn btn-default'
