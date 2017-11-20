@@ -1,6 +1,6 @@
 .jumbotron
   .row
-    %h3= "Заказ № #{ @order.id } от #{ @order.by_time.try(:strftime, '%d.%m.%Y')} ко времени #{@order.by_time.try(:strftime, '%H:%M')}"
+    %h3= @order.head_info
     %br
     %h4 Информация о заказе
     .col-md-2

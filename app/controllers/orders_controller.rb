@@ -29,8 +29,11 @@ class OrdersController < ApplicationController
   end
 
   def set_accepted
-    if params[:token] == @order.token
+    if params[:token] == @order.token && @order.init?
       @order.update(state: 'accepted')
+      @order.notify_restaurant(@order)
+      render :show
+    else
       render :show
     end
   end

@@ -1,4 +1,4 @@
-= "Заказ № #{ @order.id } от #{ @order.by_time.try(:strftime, '%d.%m.%Y')} ко времени #{@order.by_time.try(:strftime, '%H:%M')}"
+= @order.head_info
 %br
 
 Информация о заказе
@@ -32,4 +32,4 @@
 %br
 %br
 %br
-= link_to 'Принять заказ', set_accepted_order_url(@order, token: @order.token)
+= link_to 'Принять заказ', set_accepted_order_url(@order, token: @order.token) if @order.init?

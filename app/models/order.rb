@@ -15,6 +15,20 @@ class Order < ApplicationRecord
     DeliveryServiceMailer.send_order(order).deliver
   end
 
+  def notify_restaurant(order)
+    order = self
+    DeliveryServiceMailer.order_accepted(order).deliver
+  end
+
+  def head_info
+    created_time = "Заказ № #{ id } от #{ created_at.strftime('%d.%m.%Y %H:%M')}"
+    by_time = ''
+    if by_time.present?
+      by_time = ко времени "#{ by_time.strftime('%H:%M') }"
+    end
+    @info = created_time + by_time
+  end
+
   private
 
   def set_token
