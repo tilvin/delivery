@@ -19,4 +19,6 @@
           %td= order.created_at.strftime('%d.%m.%Y')
           %td= order.created_at.strftime('%H:%M')
           %td= I18n.t("activerecord.attributes.order.state.#{order.state}")
-          %td= link_to 'Просмотр', order_path(order), class: 'btn btn-success'
+          %td
+            = link_to 'Просмотр', order_path(order), class: 'btn btn-primary'
+            = link_to 'Принять заказ', set_accepted_admin_order_path(order), class: 'btn btn-warning' if can? :set_accepted, order

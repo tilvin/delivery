@@ -2,10 +2,13 @@ class AccessPolicy
   include AccessGranted::Policy
 
   def configure
-    role :admin, proc { |user| user &&user.admin? } do
+    role :admin, proc { |user| user && user.admin? } do
       can :manage, Restaurant
       can :manage, User
-      can :manage, Order
+      can [:read], Order
+      can [:set_accepted], Order do |order|
+        order.init?
+      end
       can :manage, Point
     end
 
