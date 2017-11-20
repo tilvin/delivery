@@ -6,11 +6,13 @@
     .col-md-2
       %p Ресторан
       %p Точка
+      %p Сумма заказа
       %p Комментарий
       %p Статус
     .col-md-10
       %p= @order.restaurant.name
       %p= @order.point.present? ? @order.point.name : '-'
+      %p= @order.price
       %p= @order.comment.present? ? @order.comment : '-'
       %p= I18n.t("activerecord.attributes.order.state.#{@order.state}")
   .row

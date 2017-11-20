@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(
       :phone, :name, :street, :house, :flat, :floor, :intercom, :by_time, :entrance,
-      :point_id, :comment, :state
+      :point_id, :comment, :state, :price
     )
   end
 

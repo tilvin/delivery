@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20171116195106) do
     t.integer "point_id"
     t.integer "state", default: 0
     t.string "token"
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -49,6 +49,10 @@
               = f.time_field :by_time, class: 'form-control'
               = show_errors(f.object.errors, :by_time)
         .form-group
+          = f.label 'Сумма заказа'
+          = f.text_field :price, class: 'form-control'
+          = show_errors(f.object.errors, :price)
+        .form-group
           = f.label 'Точка'
           = f.select :point_id, current_user.restaurant.points.map { |point| [point.name, point.id] }, { include_blank: true }, class: 'form-control'
         .form-group

@@ -16,6 +16,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :point_id
       t.integer :state, default: 0
       t.string :token
+      t.decimal :price
 
       t.timestamps
     end
