@@ -1,40 +1,45 @@
 .jumbotron
-  .row
-    %h3= @order.head_info
-    %br
-    %h4 Информация о заказе
-    .col-md-2
-      %p Ресторан
-      %p Точка
-      %p Сумма заказа
-      %p Комментарий
-      %p Статус
-    .col-md-10
-      %p= @order.restaurant.name
-      %p= @order.point.present? ? @order.point.name : '-'
-      %p= @order.price
-      %p= @order.comment.present? ? @order.comment : '-'
-      %p= I18n.t("activerecord.attributes.order.state.#{@order.state}")
-  .row
-    %h4 Информация о кленте
-    .col-md-2
-      %p Телефон
-      %p Имя
-      %p Улица
-      %p Дом
-      %p Подъезд
-      %p Этаж
-      %p Квартира
-      %p Домофон
+  %p.text-left= link_to 'Назад', orders_path, class: 'btn btn-primary'
+  %h3= @order.head_info
 
-    .col-md-10
-      %p= @order.phone
-      %p= @order.name
-      %p= @order.street
-      %p= @order.house
-      %p= @order.entrance
-      %p= @order.floor
-      %p= @order.flat
-      %p= @order.intercom
+  %table.table.table-hover
+    %tbody
+      %tr
+        %td Ресторан
+        %td= @order.restaurant.name
+      %tr
+        %td Статус
+        %td= I18n.t("activerecord.attributes.order.state.#{@order.state}")
+      %tr
+        %td Сумма заказа
+        %td= @order.price
+      %tr
+        %td Телефон
+        %td= @order.phone
+      %tr
+        %td Имя
+        %td= @order.name
+      %tr
+        %td Улица
+        %td= @order.street
+      %tr
+        %td Дом
+        %td= @order.house
+      %tr
+        %td Подъезд
+        %td= @order.entrance
+      %tr
+        %td Этаж
+        %td= @order.floor
+      %tr
+        %td Квартира
+        %td= @order.flat
+      %tr
+        %td Домофон
+        %td= @order.intercom
+      %tr
+        %td Комментарий
+        %td= @order.comment
+
 
 

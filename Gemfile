@@ -23,6 +23,8 @@ gem 'access-granted', '~> 1.1.0'
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 gem 'russian'
+gem 'ransack'
+gem 'paper_trail'
 
 group :development, :test do
 

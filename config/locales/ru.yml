@@ -26,3 +26,8 @@ ru:
         state:
           init: создан
           accepted: принят
+          courier_assigned: определен курьер
+          delivering: доставляется
+          done: завершен
+          deny: отклонен
+

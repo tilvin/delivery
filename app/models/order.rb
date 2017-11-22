@@ -2,11 +2,13 @@ class Order < ApplicationRecord
 
   before_create :set_token
 
+  has_paper_trail
+
   belongs_to :user
   belongs_to :restaurant
   belongs_to :point, optional: true
 
-  enum state: { init: 0, accepted: 1 }
+  enum state: { init: 0, accepted: 1, courier_assigned: 2, delivering: 3, done: 4, deny: 5 }
 
   validates :phone, :name, :street, :house, :user_id, :restaurant_id, presence: true
 
@@ -17,7 +19,7 @@ class Order < ApplicationRecord
 
   def notify_restaurant(order)
     order = self
-    DeliveryServiceMailer.order_accepted(order).deliver
+    DeliveryServiceMailer.order_changed(order).deliver
   end
 
   def head_info

@@ -3,7 +3,12 @@ class OrdersController < ApplicationController
   before_action :set_order
 
   def index
-    @orders = Order.where(restaurant: current_user.restaurant).order(created_at: :desc)
+    params[:q] ||= {}
+    if params[:q][:created_at_lteq].present?
+      params[:q][:created_at_lteq] = params[:q][:created_at_lteq].to_date.end_of_day
+    end
+    @q = Order.where(restaurant: current_user.restaurant).order(created_at: :desc).ransack(params[:q])
+    @orders = @q.result
   end
 
   def show

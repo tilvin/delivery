@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'users#index', as: :root
     resources :users
-    resources :orders, only: [:index] do
+    resources :orders do
       get 'set_accepted', on: :member
     end
     resources :restaurants do

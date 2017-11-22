@@ -1,32 +1,51 @@
 .jumbotron
-  .row
-    %h3= @order.head_info
-    .col-md-3
-      %p Ресторан
-      %p Статус
-      %p Сумма заказа
-      %p Телефон
-      %p Имя
-      %p Улица
-      %p Дом
-      %p Подъезд
-      %p Этаж
-      %p Квартира
-      %p Домофон
-      %p Комментарий
-    .col-md-9
-      %p= @order.restaurant.name
-      %p= I18n.t("activerecord.attributes.order.state.#{@order.state}")
-      %p= @order.price
-      %p= @order.phone
-      %p= @order.name
-      %p= @order.street
-      %p= @order.house
-      %p= @order.entrance
-      %p= @order.floor
-      %p= @order.flat
-      %p= @order.intercom
-      %p= @order.comment
+  %p.text-left
+    = link_to 'Назад к списку заказов', admin_orders_path, class: 'btn btn-primary'
+    = link_to 'Изменить заказ', edit_admin_order_path(@order), class: 'btn btn-success'
+
+  %h3= @order.head_info
+
+  %table.table.table-hover
+    %tbody
+      %tr
+        %td Ресторан
+        %td= @order.restaurant.name
+      %tr
+        %td Статус
+        %td= I18n.t("activerecord.attributes.order.state.#{@order.state}")
+      %tr
+        %td Сумма заказа
+        %td= @order.price
+      %tr
+        %td Стоимость доставки
+        %td= @order.delivery_price
+      %tr
+        %td Телефон
+        %td= @order.phone
+      %tr
+        %td Имя
+        %td= @order.name
+      %tr
+        %td Улица
+        %td= @order.street
+      %tr
+        %td Дом
+        %td= @order.house
+      %tr
+        %td Подъезд
+        %td= @order.entrance
+      %tr
+        %td Этаж
+        %td= @order.floor
+      %tr
+        %td Квартира
+        %td= @order.flat
+      %tr
+        %td Домофон
+        %td= @order.intercom
+      %tr
+        %td Комментарий
+        %td= @order.comment
 
 
 

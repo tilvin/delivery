@@ -5,7 +5,7 @@ class AccessPolicy
     role :admin, proc { |user| user && user.admin? } do
       can :manage, Restaurant
       can :manage, User
-      can [:read], Order
+      can :manage, Order
       can [:set_accepted], Order do |order|
         order.init?
       end

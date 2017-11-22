@@ -2,7 +2,7 @@
   .row
     .col-md-3
     .col-md-6
-      = form_for @order do |f|
+      = form_for [:admin, @order] do |f|
         .form-group
           = f.label 'Телефон'
           = f.text_field :phone, class: 'form-control', data: { mask: '+7 (999) 999-99-99'}
@@ -56,11 +56,20 @@
 
         .form-group
           = f.label 'Точка'
-          = f.select :point_id, current_user.restaurant.points.map { |point| [point.name, point.id] }, { }, class: 'form-control'
+          = f.select :point_id, @order.restaurant.points.map { |point| [point.name, point.id] }, { }, class: 'form-control'
         .form-group
           = f.label 'Комментарий'
           = f.text_area :comment, class: 'form-control', placeholder: 'Информация для курьера'
           = show_errors(f.object.errors, :comment)
         .form-group
-          = f.submit 'Сохранить', class: 'btn btn-primary'
-    .col-md-3
+          = f.label 'Стоимость доставки'
+          = f.text_field :delivery_price, class: 'form-control'
+          = show_errors(f.object.errors, :delivery_price)
+        .form-group
+          = f.label 'Статус заказа'
+          = f.select :state, Order.states.map {|key, value| [I18n.t("activerecord.attributes.order.state.#{key}"), key] }, {}, class: 'form-control'
+        .form-group
+          %p{style: "text-align: center;"}
+            = f.submit 'Сохранить', class: 'btn btn-primary'
+            = link_to 'Вернуться', admin_order_path(@order), class: 'btn btn-default'
+        .col-md-3

@@ -7,11 +7,11 @@ class DeliveryServiceMailer < ApplicationMailer
     mail(to: emails, subject: "Заказ № #{ @order.id } от #{ @order.restaurant.name }")
   end
 
-  def order_accepted(order)
+  def order_changed(order)
     @order = order
     @recipients = User.where(restaurant: @order.restaurant)
     emails = @recipients.collect(&:email).join(",")
-    mail(to: emails, subject: "Заказ № #{ @order.id } принят")
+    mail(to: emails, subject: "Статус заказа № #{ @order.id } изменен на #{I18n.t("activerecord.attributes.order.state.#{@order.state}")}")
   end
 
 end

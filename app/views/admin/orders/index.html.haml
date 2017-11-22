@@ -1,24 +1,51 @@
 .jumbotron
+  .row
+    .col-md-8
+      = search_form_for [:admin, @q], class: 'form-inline' do |f|
+        .form-group
+          = f.label 'Дата с'
+          = f.date_field :created_at_gteq, { class: 'form-control' }
+        .form-group
+          = f.label 'Дата по'
+          = f.date_field :created_at_lteq, { class: 'form-control' }
+        .form-group
+
+          = f.submit 'Найти', class: 'btn btn-primary'
+    .col-md-4
+      %p.text-right= link_to 'Новый заказ', new_order_path, class: 'btn btn-success'
   %p
     %h3 Заказы
   %table.table.table-hover
     %thead
       %tr
-        %td ID
-        %td Ресторан
-        %td Дата создания
-        %td Время создания
-        %td Статус
         %td
+          %strong ID
         %td
+          %strong Ресторан
+        %td
+          %strong Дата создания
+        %td
+          %strong Время создания
+        %td
+          %strong Адрес
+        %td
+          %strong Имя, телефон
+        %td
+          %strong Сумма заказа, руб.
+        %td
+          %strong Стоимость доставки, руб.
+        %td
+          %strong Статус
     %tbody
       - @orders.each do |order|
-        %tr
+        %tr{ data: { link: admin_order_path(order)  } }
           %td= order.id
           %td= order.restaurant.name
           %td= order.created_at.strftime('%d.%m.%Y')
           %td= order.created_at.strftime('%H:%M')
+          %td= address(order)
+          %td= name_and_phone(order)
+          %td= order.price
+          %td= order.delivery_price
           %td= I18n.t("activerecord.attributes.order.state.#{order.state}")
-          %td
-            = link_to 'Просмотр', order_path(order), class: 'btn btn-primary'
-            = link_to 'Принять заказ', set_accepted_admin_order_path(order), class: 'btn btn-warning' if can? :set_accepted, order
+
