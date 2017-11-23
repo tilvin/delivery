@@ -14,8 +14,8 @@ module ApplicationHelper
 
   def address(order)
     main = "#{order.street}, дом: #{ order.house }<br/> "
-    entrance = order.entrance.present? ? "подъезд: #{ order.entrance }" : ''
-    intercom = order.intercom.present? ? ", домофон: #{ order.intercom }" : ''
+    entrance = order.entrance.present? ? "под.: #{ order.entrance }" : ''
+    intercom = order.intercom.present? ? ", код: #{ order.intercom }" : ''
     floor = order.floor.present? ? ", эт: #{ order.floor }" : ''
     flat = order.flat.present? ? ", кв.: #{ order.flat }" : ''
 
