@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def address(order)
-    main = "улица: #{order.street}, дом: #{ order.house }<br/> "
+    main = "#{order.street}, дом: #{ order.house }<br/> "
     entrance = order.entrance.present? ? "подъезд: #{ order.entrance }" : ''
     intercom = order.intercom.present? ? ", домофон: #{ order.intercom }" : ''
     floor = order.floor.present? ? ", эт: #{ order.floor }" : ''
